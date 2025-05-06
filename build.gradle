@@ -1,5 +1,7 @@
 plugins {
 	id 'java'
+	id 'se.thinkcode.cucumber-runner' version '0.0.11'
+	id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.25"
 	id 'org.springframework.boot' version '3.4.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -18,11 +20,75 @@ repositories {
 }
 
 dependencies {
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.32.0'
+	implementation 'org.seleniumhq.selenium:selenium-devtools-v135:4.32.0'
+	implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.8.0'
+	implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.1.0'
+	implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.1.0'
+	implementation group: 'io.cucumber', name: 'cucumber-spring', version: '7.1.0'
+	implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.1.0'
+	implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.1.0'
+	implementation group: 'io.cucumber', name: 'cucumber-spring', version: '7.1.0'
+	implementation 'net.masterthought:maven-cucumber-reporting:5.7.8'
+	implementation group: 'tech.grasshopper', name: 'extentreports-cucumber7-adapter', version: '1.10.1'
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'junit:junit:4.13'
+	testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
+	testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 }
 
+cucumber {
+	if (this.hasProperty("env")) {
+		System.setProperty("spring.profiles.active", "$env")
+		println "using environment $env"
+	}
+	if (this.hasProperty("props")) {
+		System.setProperty("spring.config.name", "$props,application-$env")
+		println "using properties $props"
+	}
+	main = 'io.cucumber.core.cli.Main'
+	glue = 'classpath:com.demo.traveloka.website.automation'
+	plugin = ['pretty', "json:build/cucumber.json", "html:build/result", "junit:target/cucumber-reports/cucumber.xml"]
+}
+
+test {
+	systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+	systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+
+cucumberReports {
+	runWithJenkins = false
+	outputDir = file("$projectDir/build/generated-reports")
+	buildId = System.getenv('BUILD_NUMBER').toString()
+	reports = files("$projectDir/build/cucumber.json")
+	trends = file("$projectDir/src/test/resources/trends/trends.json")
+	trendsLimit = 10
+}
+
+
+test {
+	useJUnit()
+}
+
+configurations {
+	testImplementation.extendsFrom testRuntime
+}
+
+tasks.withType(Test) {
+	systemProperty 'java.util.logging.config.file', 'src/test/resources/logging.properties'
+}
+
+
+/*
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+ */
