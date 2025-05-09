@@ -2,3 +2,5 @@ spring:
   config:
     activate:
       on-profile: production
+web:
+  baseUrl: https://alfagift.id

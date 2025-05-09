@@ -1,6 +1,7 @@
 package com.demo.traveloka.website.automation.pages;
 
 import com.demo.traveloka.website.automation.base.BasePageObject;
+import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 
 import static com.demo.traveloka.website.automation.locators.HomePageLocator.*;
@@ -24,6 +25,16 @@ public class HomePage extends BasePageObject {
     }
     public void clickCategoryMenu(){
         click(MENU_CATEGORY);
+    }
+    public void hoverCategoryName(String category){
+        hover(By.xpath(String.format(MENU_CATEGORY_NAME,category)));
+    }
+    public void hoverSubCategoryName(String subCategory){
+        hover(By.xpath(String.format(MENU_SUB_CATEGORY_NAME,subCategory)));
+        click(By.xpath(String.format(MENU_SUB_CATEGORY_NAME,subCategory)));
+    }
+    public String getHeaderCategory(String category){
+        return getText(By.xpath(String.format(LABEL_HEADER_CATEGORY_PAGE,category)));
     }
 
 }

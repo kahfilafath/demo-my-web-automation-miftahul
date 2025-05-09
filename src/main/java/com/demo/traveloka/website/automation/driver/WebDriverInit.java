@@ -5,18 +5,31 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-@Component
+@Configuration
 public class WebDriverInit {
 
     public static WebDriver driver;
+    @Value("driver.web.browser")
+    private String webBrowser;
+    @Value("driver.web.props.arguments.startMaximized")
+    private String startMaximized;
+    @Value("driver.web.props.arguments.incognito")
+    private String incognito;
+    @Value("driver.web.props.arguments.disableNotification")
+    private String disableNotif;
+    @Value("driver.web.props.arguments.disablePopupBlocking")
+    private String disablePopup;
 
-    public void initialize()  {
+
+
+    public void initialize(String url)  {
 
         // Setup ChromeDriver
         WebDriverManager.chromedriver().setup();
@@ -26,10 +39,10 @@ public class WebDriverInit {
         Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("profile.default_content_setting_values.geolocation", 2);
 
-        options.addArguments("--start-maximized");
-        options.addArguments("--disable-notifications");
-        //options.addArguments("--incognito");
-        options.addArguments("--disable-popup-blocking");
+        options.addArguments(this.startMaximized);
+        options.addArguments(this.disableNotif);
+        options.addArguments(this.incognito);
+        options.addArguments(this.disablePopup);
         options.setExperimentalOption("prefs", prefs);
         // options.addArguments("--headless"); // enable for headless mode
 
@@ -37,7 +50,7 @@ public class WebDriverInit {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         // Example: open a webpage
-        driver.get("https://alfagift.id");
+        driver.get(url);
 
     }
 

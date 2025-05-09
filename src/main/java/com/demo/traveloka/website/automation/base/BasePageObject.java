@@ -3,6 +3,7 @@ package com.demo.traveloka.website.automation.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -48,6 +49,11 @@ public class BasePageObject {
     public void waitUntilTextPresent(By locator, String text) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.textToBePresentInElement(find(locator), text));
+    }
+
+    public void hover(By locator){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(find(locator)).perform();
     }
 
 

@@ -11,11 +11,11 @@ import org.testng.annotations.DataProvider;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"com/alfagift/android/automation"},
+        glue = {"com/demo/traveloka/website/automation"},
         features = {"src/test/resources/features"},
-        plugin = {"json:build/cucumber1.json", "pretty"},
+        plugin = {"json:build/cucumber.json", "pretty"},
         stepNotifications = true,
-        tags = "",
+        tags = "@TC001",
         publish = true
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {

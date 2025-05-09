@@ -3,8 +3,9 @@
   Feature: Home Page
 
     @TC001
-    Scenario: Verify user land to alfagift website
+    Scenario: Verify user successfully navigate to Product Category Page from Home Page
       Given user land to alfagift website
-      Then user click category menu on Home Page
-      #And user click button explore on Home Page
-      #Then user should see "Jelajahi Alfagift" on Home Page
+      And user click category menu on Home Page
+      When user select category "Kebutuhan Dapur" on Home Page
+      And user select sub category "Perlengkapan Dapur & Ruang Makan" on Home Page
+      Then user successfully navigate to "Perlengkapan Dapur & Ruang Makan" on Home Page
