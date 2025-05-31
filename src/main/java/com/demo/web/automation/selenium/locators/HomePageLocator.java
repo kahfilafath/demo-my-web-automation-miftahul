@@ -1,4 +1,4 @@
-package com.demo.traveloka.website.automation.locators;
+package com.demo.web.automation.selenium.locators;
 
 import org.openqa.selenium.By;
 

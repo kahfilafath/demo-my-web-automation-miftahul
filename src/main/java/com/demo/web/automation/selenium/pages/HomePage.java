@@ -1,10 +1,10 @@
-package com.demo.traveloka.website.automation.pages;
+package com.demo.web.automation.selenium.pages;
 
-import com.demo.traveloka.website.automation.base.BasePageObject;
+import com.demo.web.automation.selenium.base.BasePageObject;
 import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;
 
-import static com.demo.traveloka.website.automation.locators.HomePageLocator.*;
+import static com.demo.web.automation.selenium.locators.HomePageLocator.*;
 
 @Component
 public class HomePage extends BasePageObject {

@@ -1,4 +1,4 @@
-package com.demo.traveloka.website.automation.properties;
+package com.demo.web.automation.selenium.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,6 +1,6 @@
-package com.demo.traveloka.website.automation.steps;
+package com.demo.web.automation.selenium.steps;
 
-import com.demo.traveloka.website.automation.pages.HomePage;
+import com.demo.web.automation.selenium.pages.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

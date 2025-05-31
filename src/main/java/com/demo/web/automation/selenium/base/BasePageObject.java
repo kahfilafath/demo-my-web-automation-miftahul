@@ -1,4 +1,4 @@
-package com.demo.traveloka.website.automation.base;
+package com.demo.web.automation.selenium.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static com.demo.traveloka.website.automation.driver.WebDriverInit.driver;
+import static com.demo.web.automation.selenium.driver.WebDriverInit.driver;
 
 public class BasePageObject {
 

@@ -1,13 +1,13 @@
-package com.demo.traveloka.website.automation;
+package com.demo.web.automation.selenium;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoTravelokaAutomationApplication {
+public class DemoWebAutomationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoTravelokaAutomationApplication.class, args);
+		SpringApplication.run(DemoWebAutomationApplication.class, args);
 	}
 
 }

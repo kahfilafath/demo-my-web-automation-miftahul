@@ -1,7 +1,7 @@
-package com.demo.traveloka.website.automation.hooks;
+package com.demo.web.automation.selenium.hooks;
 
-import com.demo.traveloka.website.automation.driver.WebDriverInit;
-import com.demo.traveloka.website.automation.properties.WebProperties;
+import com.demo.web.automation.selenium.driver.WebDriverInit;
+import com.demo.web.automation.selenium.properties.WebProperties;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.springframework.beans.factory.annotation.Autowired;

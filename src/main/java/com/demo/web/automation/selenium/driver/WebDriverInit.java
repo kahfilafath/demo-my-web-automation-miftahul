@@ -1,4 +1,4 @@
-package com.demo.traveloka.website.automation.driver;
+package com.demo.web.automation.selenium.driver;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;

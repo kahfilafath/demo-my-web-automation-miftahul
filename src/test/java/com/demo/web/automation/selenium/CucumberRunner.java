@@ -1,4 +1,4 @@
-package com.demo.traveloka.website.automation;
+package com.demo.web.automation.selenium;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.junit.runner.RunWith;
@@ -11,11 +11,11 @@ import org.testng.annotations.DataProvider;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"com/demo/traveloka/website/automation"},
+        glue = {"com/demo/web/automation/selenium"},
         features = {"src/test/resources/features"},
         plugin = {"json:build/cucumber.json", "pretty"},
         stepNotifications = true,
-        tags = "@TC001",
+        tags = "",
         publish = true
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
