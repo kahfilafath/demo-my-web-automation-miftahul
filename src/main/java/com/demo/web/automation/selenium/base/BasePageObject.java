@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static com.demo.web.automation.selenium.driver.WebDriverInit.driver;
 
@@ -18,6 +19,11 @@ public class BasePageObject {
     public WebElement find(By locator){
         return getDriver().findElement(locator);
     }
+
+    public List<WebElement> findAlls(By locator){
+        return getDriver().findElements(locator);
+    }
+
     public void click(By locator){
         find(locator).click();
     }
@@ -33,6 +39,7 @@ public class BasePageObject {
     public Boolean isDisplayed(By locator){
         return find(locator).isDisplayed();
     }
+    public Boolean isEnabled(By locator){return find(locator).isEnabled();}
 
     public static void wait(int ms) {
         try {

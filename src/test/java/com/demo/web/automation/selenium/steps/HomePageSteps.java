@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class HomePageSteps {
@@ -46,5 +47,16 @@ public class HomePageSteps {
     @Then("user successfully navigate to {string} on Home Page")
     public void userSuccessfullyNavigateToOnHomePage(String header) {
         Assert.assertEquals(header,homePage.getHeaderCategory(header));
+    }
+
+    @When("user search product {string} on Home Page")
+    public void userSearchProductOnHomePage(String productName) throws InterruptedException {
+        homePage.inputProductName(productName);
+        homePage.clickSearchProductButton();
+    }
+
+    @Then("user should discover product contains {string} on Home Page")
+    public void userShouldDiscoverProductContainsOnHomePage(String name) {
+        Assertions.assertEquals(name,homePage.getProductName());
     }
 }

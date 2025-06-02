@@ -50,6 +50,7 @@ public class WebDriverInit {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         // Example: open a webpage
+        driver.manage().window().maximize();
         driver.get(url);
 
     }
